@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+}
+
+group 'bruce'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 11
+repositories {
+    mavenCentral()
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8" // 使控制台不產生亂碼
+}
+
+ext {
+    springVersion = '5.2.4.RELEASE'
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    implementation group: 'org.springframework', name: 'spring-context', version: springVersion
+    implementation group: 'org.springframework', name: 'spring-jms', version: springVersion
+    implementation group: 'org.apache.activemq', name: 'activemq-pool', version: '5.15.12' // 如果需要 activeMQ 的連線池可加這行
+}
